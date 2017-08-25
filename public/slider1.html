@@ -62,12 +62,12 @@
 
 	<div class="content">
 		<div>
-			<h1>ujjwal</h1>
+			<h1>Once upon a time there was an old woman who loved baking gingerbread. She would bake gingerbread cookies, cakes, houses and gingerbread people, all decorated with chocolate and peppermint, caramel candies and colored frosting.She lived with her husband on a farm at the edge of town. The sweet spicy smell of gingerbread brought children skipping and running to see what would be offered that day.Unfortunately the children gobbled up the treats so fast that the old woman had a hard time keeping her supply of flour and spices to continue making the batches of gingerbread. Sometimes she suspected little hands of having reached through her kitchen window because gingerbread pieces and cookies would disappear. One time a whole gingerbread house vanished mysteriously. She told her husband, "Those naughty children are at it again. They don't understand all they have to do is knock on the door and I'll give them my gingerbread treats."One day she made a special batch of gingerbread men because they were extra big. Unfortunately for the last gingerbread man she ran out of batter and he was half the size of the others.She decorated the gingerbread men with care, each having socks, shirt and pants of different colors. When it came to the little gingerbread man she felt sorry for him and gave him more color than the others. "It doesn't matter he's small," she thought, "He'll still be tasty."</h1>
 		</div>
 	</div>
 
     <div id="js-example-change-value">
-        <input type="range" min="1" max="20" value="1" data-rangeslider>
+        <input type="range" min="1" max="10" value="1" data-rangeslider>
         <output></output>
     </div>
 
@@ -119,9 +119,44 @@
             onSlide: function(position, value) {
                 console.log('onSlide');
                 console.log('position: ' + position, 'value: ' + value);
-              	
-              		$( "h1" ).text( `${value}` );	
-              	
+              	var page1="Once upon a time there was an old woman who loved baking gingerbread. She would bake gingerbread cookies, cakes, houses and gingerbread people, all decorated with chocolate and peppermint, caramel candies and colored frosting.She lived with her husband on a farm at the edge of town. The sweet spicy smell of gingerbread brought children skipping and running to see what would be offered that day.Unfortunately the children gobbled up the treats so fast that the old woman had a hard time keeping her supply of flour and spices to continue making the batches of gingerbread. Sometimes she suspected little hands of having reached through her kitchen window because gingerbread pieces and cookies would disappear. One time a whole gingerbread house vanished mysteriously. She told her husband, \"Those naughty children are at it again. They don't understand all they have to do is knock on the door and I'll give them my gingerbread treats.\"\nOne day she made a special batch of gingerbread men because they were extra big. Unfortunately for the last gingerbread man she ran out of batter and he was half the size of the others.She decorated the gingerbread men with care, each having socks, shirt and pants of different colors. When it came to the little gingerbread man she felt sorry for him and gave him more color than the others. \"It doesn't matter he's small,\" she thought, \"He'll still be tasty.\"";
+              	var page2="Putting the rack on the kitchen windowsill she left it there to cool and went to finish her laundry. The gingerbread men lay quietly, their frosted eyes gazing at the sky with its puffy clouds.At that moment a voice came from nowhere. \"Get up. Get up. Come with me.\".Everyone looked to see who was speaking.It was a butterfly flying just outside the window. Butterflies are naturally beautiful, but her wings were an exceptionally pretty marbled blue.\"Come with me,\" she urged again.The gingerbread men didn't react except to keep staring. All but the smallest gingerbread man who jumped up from the tray and leaped off the kitchen windowsill onto the grass below faster than you could say \"hurry.\"";
+              	var page3="\"Where are we going?\" he asked breathlessly.\"Away.\" And before the butterfly had finished speaking children appeared in the yard. Spying the little gingerbread man they started shrieking with delight and began chasing him.";
+              	var page4="\"Stop, stop,\" they shouted. \"We want to eat you.\"But with his little legs churning the gingerbread man only ran faster. He yelled,\"I won't stop.Run, run as fast as you can.You can't catch me.I'm the gingerbread man.\"And truly those children could not catch him. Once out of their sight he continued running until he had reached a pasture where two horses were grazing. He sat down on a rock near the fence.\"Don't stop,\" said the butterfly fluttering nearby.\"I want to rest,\" he argued."
+
+              	var page5 = `That was a mistake as one of the horses trotted over to the fence and whinnied. "Oh you smell so good little gingerbread man. Come over here so I can smell you better."
+
+
+The little gingerbread man shook his head, but suddenly that horse jumped the fence and began galloping after him, so he had to run even faster. He called out,
+
+"I outran children and I'll outrun you.
+Run, run as fast as you can.
+You can't catch me.
+I'm the gingerbread man."
+And truly, that horse could not catch him.
+
+The next time he rested the little gingerbread man took care to lie amongst the grass well off the road where no one would see him.
+
+"Everybody wants to eat me," he complained to the butterfly. "Do you want to eat me, too?"
+
+Laughing she answered. "I love the smell of gingerbread. It's better than my favorite flowers. But I sip nectar, not gingerbread. Besides, you're my friend and friends don't eat friends."`;
+
+              	if(value==1){
+              		$( "h1" ).text( page1);		
+              	}
+              	else if(value==2){
+              		$( "h1" ).text( page2);
+              	}
+              	else if(value==3){
+              		$( "h1" ).text( page3);
+              	}
+              	else if(value==4){
+              		$( "h1" ).text( page4);
+              	}
+              	else if(value==5){
+              		$("h1").text(page5);
+              	}
+
               	
             },
 
@@ -129,9 +164,6 @@
             onSlideEnd: function(position, value) {
                 console.log('onSlideEnd');
                 console.log('position: ' + position, 'value: ' + value);
-            	
-              		$( "h1" ).text( `${value}` );	
-             
             }
         });
 
