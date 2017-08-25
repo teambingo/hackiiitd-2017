@@ -60,6 +60,12 @@
 	<br>
 	<br>
 
+	<div class="content">
+		<div>
+			<h1>ujjwal</h1>
+		</div>
+	</div>
+
     <div id="js-example-change-value">
         <input type="range" min="1" max="20" value="1" data-rangeslider>
         <output></output>
@@ -88,15 +94,7 @@
             valueOutput(e.target);
         });
 
-        
-
-        // Example functionality to demonstrate programmatic value changes
-        $document.on('click', '#js-example-change-value button', function(e) {
-            var $inputRange = $(selector, e.target.parentNode);
-            var value = $('input[type="number"]', e.target.parentNode)[0].value;
-
-            $inputRange.val(value).change();
-        });
+   
 
         
 
@@ -121,12 +119,19 @@
             onSlide: function(position, value) {
                 console.log('onSlide');
                 console.log('position: ' + position, 'value: ' + value);
+              	
+              		$( "h1" ).text( `${value}` );	
+              	
+              	
             },
 
             // Callback function
             onSlideEnd: function(position, value) {
                 console.log('onSlideEnd');
                 console.log('position: ' + position, 'value: ' + value);
+            	
+              		$( "h1" ).text( `${value}` );	
+             
             }
         });
 
