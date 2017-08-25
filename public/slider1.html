@@ -8,56 +8,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/rangeslider.css">
     <style>
-        *,
-        *:before,
-        *:after {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-        html {
-            color: #404040;
-            font-family: Helvetica, arial, sans-serif;
-        }
+    html {
+        color: #404040;
+        font-family: Helvetica, arial, sans-serif;
+    }
 
-        body {
-            padding: 50px 20px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
+    body {
+        padding: 50px 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
 
-        output {
-            display: block;
-            font-size: 30px;
-            font-weight: bold;
-            text-align: center;
-            margin: 30px 0;
-            width: 100%;
-        }
+    output {
+        display: block;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        margin: 30px 0;
+        width: 100%;
+    }
 
-        .u-left {
-            float: left;
-        }
+    .u-left {
+        float: left;
+    }
 
-        .u-cf:before,
-        .u-cf:after {
-            content: "";
-            display: table;
-        }
+    .u-cf:before,
+    .u-cf:after {
+        content: "";
+        display: table;
+    }
 
-        .u-cf:after {
-            clear: both;
-        }
+    .u-cf:after {
+        clear: both;
+    }
 
-        .u-text-left {
-            text-align: left;
-        }
-        .fixed1{
-            position: fixed;
-            display: block;
-            margin-top: 50vh; 
-        }
+    .u-text-left {
+        text-align: left;
+    }
+
+    .fixed1 {
+        position: fixed;
+        display: block;
+        margin-top: 50vh;
+    }
     </style>
     <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -65,80 +66,73 @@
 </head>
 
 <body>
-
     <br>
     <br>
-
     <div class="content">
-       
-
-        
-            <div id="js-example-change-value">
-                <output></output>
-                <input type="range" min="1" max="10" value="1" data-rangeslider>
-               
-            </div>
-             <div>
+        <div id="js-example-change-value">
+            <output></output>
+            <input type="range" min="1" max="10" value="1" data-rangeslider>
+        </div>
+        <div>
             <p>
                 Once upon a time there was an old woman who loved baking gingerbread. She would bake gingerbread cookies, cakes, houses and gingerbread people, all decorated with chocolate and peppermint, caramel candies and colored frosting.She lived with her husband on a farm at the edge of town. The sweet spicy smell of gingerbread brought children skipping and running to see what would be offered that day.Unfortunately the children gobbled up the treats so fast that the old woman had a hard time keeping her supply of flour and spices to continue making the batches of gingerbread. Sometimes she suspected little hands of having reached through her kitchen window because gingerbread pieces and cookies would disappear. One time a whole gingerbread house vanished mysteriously. She told her husband, \"Those naughty children are at it again. They don't understand all they have to do is knock on the door and I'll give them my gingerbread treats.\"\nOne day she made a special batch of gingerbread men because they were extra big. Unfortunately for the last gingerbread man she ran out of batter and he was half the size of the others.She decorated the gingerbread men with care, each having socks, shirt and pants of different colors. When it came to the little gingerbread man she felt sorry for him and gave him more color than the others. \"It doesn't matter he's small,\" she thought, \"He'll still be tasty.\"
             </p>
         </div>
-        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/rangeslider.js"></script>
+    <script>
+    $(function() {
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="js/rangeslider.js"></script>
-        <script>
-            $(function () {
+        var $document = $(document);
+        var selector = '[data-rangeslider]';
+        var $element = $(selector);
 
-                var $document = $(document);
-                var selector = '[data-rangeslider]';
-                var $element = $(selector);
+        // For ie8 support
+        var textContent = ('textContent' in document) ? 'textContent' : 'innerText';
 
-                // For ie8 support
-                var textContent = ('textContent' in document) ? 'textContent' : 'innerText';
+        // Example functionality to demonstrate a value feedback
+        function valueOutput(element) {
+            var value = element.value;
+            var output = element.parentNode.getElementsByTagName('output')[0] || element.parentNode.parentNode.getElementsByTagName('output')[0];
+            output[textContent] = value;
+        }
 
-                // Example functionality to demonstrate a value feedback
-                function valueOutput(element) {
-                    var value = element.value;
-                    var output = element.parentNode.getElementsByTagName('output')[0] || element.parentNode.parentNode.getElementsByTagName('output')[0];
-                    output[textContent] = value;
-                }
-
-                $document.on('input', 'input[type="range"], ' + selector, function (e) {
-                    valueOutput(e.target);
-                });
-
+        $document.on('input', 'input[type="range"], ' + selector, function(e) {
+            valueOutput(e.target);
+        });
 
 
 
 
-                // Example functionality to test initialisation on hidden elements
-                $document.on('click', '#js-example-hidden button[data-behaviour="toggle"]', function (e) {
-                    var $container = $(e.target.previousElementSibling);
-                    $container.toggle();
-                });
 
-                // Basic rangeslider initialization
-                $element.rangeslider({
+        // Example functionality to test initialisation on hidden elements
+        $document.on('click', '#js-example-hidden button[data-behaviour="toggle"]', function(e) {
+            var $container = $(e.target.previousElementSibling);
+            $container.toggle();
+        });
 
-                    // Deactivate the feature detection
-                    polyfill: false,
+        // Basic rangeslider initialization
+        $element.rangeslider({
 
-                    // Callback function
-                    onInit: function () {
-                        valueOutput(this.$element[0]);
-                    },
+            // Deactivate the feature detection
+            polyfill: false,
 
-                    // Callback function
-                    onSlide: function (position, value) {
-                        console.log('onSlide');
-                        console.log('position: ' + position, 'value: ' + value);
-                        var page1 = "Once upon a time there was an old woman who loved baking gingerbread. She would bake gingerbread cookies, cakes, houses and gingerbread people, all decorated with chocolate and peppermint, caramel candies and colored frosting.She lived with her husband on a farm at the edge of town. The sweet spicy smell of gingerbread brought children skipping and running to see what would be offered that day.Unfortunately the children gobbled up the treats so fast that the old woman had a hard time keeping her supply of flour and spices to continue making the batches of gingerbread. Sometimes she suspected little hands of having reached through her kitchen window because gingerbread pieces and cookies would disappear. One time a whole gingerbread house vanished mysteriously. She told her husband, \"Those naughty children are at it again. They don't understand all they have to do is knock on the door and I'll give them my gingerbread treats.\"\nOne day she made a special batch of gingerbread men because they were extra big. Unfortunately for the last gingerbread man she ran out of batter and he was half the size of the others.She decorated the gingerbread men with care, each having socks, shirt and pants of different colors. When it came to the little gingerbread man she felt sorry for him and gave him more color than the others. \"It doesn't matter he's small,\" she thought, \"He'll still be tasty.\"";
-                        var page2 = "Putting the rack on the kitchen windowsill she left it there to cool and went to finish her laundry. The gingerbread men lay quietly, their frosted eyes gazing at the sky with its puffy clouds.At that moment a voice came from nowhere. \"Get up. Get up. Come with me.\".Everyone looked to see who was speaking.It was a butterfly flying just outside the window. Butterflies are naturally beautiful, but her wings were an exceptionally pretty marbled blue.\"Come with me,\" she urged again.The gingerbread men didn't react except to keep staring. All but the smallest gingerbread man who jumped up from the tray and leaped off the kitchen windowsill onto the grass below faster than you could say \"hurry.\"";
-                        var page3 = "\"Where are we going?\" he asked breathlessly.\"Away.\" And before the butterfly had finished speaking children appeared in the yard. Spying the little gingerbread man they started shrieking with delight and began chasing him.";
-                        var page4 = "\"Stop, stop,\" they shouted. \"We want to eat you.\"But with his little legs churning the gingerbread man only ran faster. He yelled,\"I won't stop.Run, run as fast as you can.You can't catch me.I'm the gingerbread man.\"And truly those children could not catch him. Once out of their sight he continued running until he had reached a pasture where two horses were grazing. He sat down on a rock near the fence.\"Don't stop,\" said the butterfly fluttering nearby.\"I want to rest,\" he argued."
+            // Callback function
+            onInit: function() {
+                valueOutput(this.$element[0]);
+            },
 
-                        var page5 = `That was a mistake as one of the horses trotted over to the fence and whinnied. "Oh you smell so good little gingerbread man. Come over here so I can smell you better."
+            // Callback function
+            onSlide: function(position, value) {
+                console.log('onSlide');
+                console.log('position: ' + position, 'value: ' + value);
+                var page1 = "Once upon a time there was an old woman who loved baking gingerbread. She would bake gingerbread cookies, cakes, houses and gingerbread people, all decorated with chocolate and peppermint, caramel candies and colored frosting.She lived with her husband on a farm at the edge of town. The sweet spicy smell of gingerbread brought children skipping and running to see what would be offered that day.Unfortunately the children gobbled up the treats so fast that the old woman had a hard time keeping her supply of flour and spices to continue making the batches of gingerbread. Sometimes she suspected little hands of having reached through her kitchen window because gingerbread pieces and cookies would disappear. One time a whole gingerbread house vanished mysteriously. She told her husband, \"Those naughty children are at it again. They don't understand all they have to do is knock on the door and I'll give them my gingerbread treats.\"\nOne day she made a special batch of gingerbread men because they were extra big. Unfortunately for the last gingerbread man she ran out of batter and he was half the size of the others.She decorated the gingerbread men with care, each having socks, shirt and pants of different colors. When it came to the little gingerbread man she felt sorry for him and gave him more color than the others. \"It doesn't matter he's small,\" she thought, \"He'll still be tasty.\"";
+                var page2 = "Putting the rack on the kitchen windowsill she left it there to cool and went to finish her laundry. The gingerbread men lay quietly, their frosted eyes gazing at the sky with its puffy clouds.At that moment a voice came from nowhere. \"Get up. Get up. Come with me.\".Everyone looked to see who was speaking.It was a butterfly flying just outside the window. Butterflies are naturally beautiful, but her wings were an exceptionally pretty marbled blue.\"Come with me,\" she urged again.The gingerbread men didn't react except to keep staring. All but the smallest gingerbread man who jumped up from the tray and leaped off the kitchen windowsill onto the grass below faster than you could say \"hurry.\"";
+                var page3 = "\"Where are we going?\" he asked breathlessly.\"Away.\" And before the butterfly had finished speaking children appeared in the yard. Spying the little gingerbread man they started shrieking with delight and began chasing him.";
+                var page4 = "\"Stop, stop,\" they shouted. \"We want to eat you.\"But with his little legs churning the gingerbread man only ran faster. He yelled,\"I won't stop.Run, run as fast as you can.You can't catch me.I'm the gingerbread man.\"And truly those children could not catch him. Once out of their sight he continued running until he had reached a pasture where two horses were grazing. He sat down on a rock near the fence.\"Don't stop,\" said the butterfly fluttering nearby.\"I want to rest,\" he argued."
+
+                var page5 = `That was a mistake as one of the horses trotted over to the fence and whinnied. "Oh you smell so good little gingerbread man. Come over here so I can smell you better."
 
 
 The little gingerbread man shook his head, but suddenly that horse jumped the fence and began galloping after him, so he had to run even faster. He called out,
@@ -155,44 +149,96 @@ The next time he rested the little gingerbread man took care to lie amongst the 
 
 Laughing she answered. "I love the smell of gingerbread. It's better than my favorite flowers. But I sip nectar, not gingerbread. Besides, you're my friend and friends don't eat friends."`;
 
-                        if (value == 1) {
-                            $("p").text(page1);
-                        }
-                        else if (value == 2) {
-                            $("p").text(page2);
-                        }
-                        else if (value == 3) {
-                            $("p").text(page3);
-                        }
-                        else if (value == 4) {
-                            $("p").text(page4);
-                        }
-                        else if (value == 5) {
-                            $("p").text(page5);
-                        }
-
-
-                    },
-
-                    // Callback function
-                    onSlideEnd: function (position, value) {
-                        console.log('onSlideEnd');
-                        console.log('position: ' + position, 'value: ' + value);
-                    }
-                });
-
-            });
-            $('p').each(function() {
+                if (value == 1) {
+                    $("p").text(page1);
+                    $('p').each(function() {
         $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
             function(v) { return '<span class=sentence>' + v + '</span>' }
         ));
     });
     $('.sentence').click(function() {
-        $( "p.inner" ).replaceWith( "<h2>New heading</h2>" );
-        var selected_text = $(this).text()
-        $(this).replaceWith( `<p style="color:red">${selected_text}</p>` );
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
     });
-        </script>
+                } else if (value == 2) {
+                    $("p").text(page2);
+                    $('p').each(function() {
+        $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
+            function(v) { return '<span class=sentence>' + v + '</span>' }
+        ));
+    });
+    $('.sentence').click(function() {
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
+    });
+                } else if (value == 3) {
+                    $("p").text(page3);
+                    $('p').each(function() {
+        $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
+            function(v) { return '<span class=sentence>' + v + '</span>' }
+        ));
+    });
+    $('.sentence').click(function() {
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
+    });
+                } else if (value == 4) {
+                    $("p").text(page4);
+                    $('p').each(function() {
+        $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
+            function(v) { return '<span class=sentence>' + v + '</span>' }
+        ));
+    });
+    $('.sentence').click(function() {
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
+    });
+                } else if (value == 5) {
+                    $("p").text(page5);
+                    $('p').each(function() {
+        $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
+            function(v) { return '<span class=sentence>' + v + '</span>' }
+        ));
+    });
+    $('.sentence').click(function() {
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
+    });
+                }
+
+
+            },
+
+            // Callback function
+            onSlideEnd: function(position, value) {
+                console.log('onSlideEnd');
+                console.log('position: ' + position, 'value: ' + value);
+            }
+        });
+
+    });
+    $('p').each(function() {
+        $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
+            function(v) { return '<span class=sentence>' + v + '</span>' }
+        ));
+    });
+    $('.sentence').click(function() {
+        $("p.inner").replaceWith("<h2>New heading</h2>");
+        var selected_text = $(this).text();
+        $(this).replaceWith(`<p style="color:red">${selected_text}</p>`);
+        setTimeout(()=>$(this).replaceWith(`<p>${selected_text}</p>`),3000);
+    });
+    </script>
 </body>
 
 </html>
