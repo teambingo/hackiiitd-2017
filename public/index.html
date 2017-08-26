@@ -137,71 +137,84 @@
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
     <script src="js/rangeslider.js"></script>
     <script>
-        
-
-
-
         $(document).ready(function () {
-        
-        /**
-         * Emotion Detection
-         **/
 
-        var config = {
-            apiKey: "AIzaSyCOmubrc3gEd6LOW5UfRH5LVaL-GFgRCgk",
-            authDomain: "not-so-awesome-project-45a2e.firebaseapp.com",
-            databaseURL: "https://not-so-awesome-project-45a2e.firebaseio.com",
-            projectId: "not-so-awesome-project-45a2e",
-            storageBucket: "not-so-awesome-project-45a2e.appspot.com",
-            messagingSenderId: "481329884022"
-        };
-        firebase.initializeApp(config);
-        // firebase.database().ref('/hackiiitd/').remove()
-        var divRoot = $("#affdex_elements")[0];
+            /**
+             * Emotion Detection
+             **/
+            var engagArrs = []; 
+            var config = {
+                apiKey: "AIzaSyCOmubrc3gEd6LOW5UfRH5LVaL-GFgRCgk",
+                authDomain: "not-so-awesome-project-45a2e.firebaseapp.com",
+                databaseURL: "https://not-so-awesome-project-45a2e.firebaseio.com",
+                projectId: "not-so-awesome-project-45a2e",
+                storageBucket: "not-so-awesome-project-45a2e.appspot.com",
+                messagingSenderId: "481329884022"
+            };
+            firebase.initializeApp(config);
+            var ref = firebase.database().ref('/hackiiitd/');
+            ref.once('value', function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    var childKey = childSnapshot.val();
 
-        // The captured frame's width in pixels
-        var width = 320;
-
-        // The captured frame's height in pixels
-        var height = 240;
-    var emotion ;
-
-
-        var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
-        //Construct a CameraDetector and specify the image width / height and face detector mode.
-        var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
-        detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
-
-            if (faces['0'] != null) {
-
-                var emotions1 = faces['0'].emotions;
-                emotion = emotions1;
-            }
-
-        });
-        /* 
-          onImageResults success receives 3 parameters:
-          - image: An imageData object containing the pixel values for the processed frame.
-          - timestamp: An imageData object contain the pixel values for the processed frame.
-          - err_detail: A string contains the encountered exception.
-        */
-        detector.addEventListener("onImageResultsFailure", function (image, timestamp, err_detail) { });
-        detector.addEventListener("onWebcamConnectSuccess", function () {
-            console.log("I was able to connect to the camera successfully.");
-        });
-
-        detector.addEventListener("onWebcamConnectFailure", function () {
-            console.log("I've failed to connect to the camera :(");
-        });
+                    // var val = { x: x, y: childKey.engagement }
+                    // dps.push(val);
+                    // x++;
+            //   var d  =   childKey[0];
+            var emo =  childKey[`${Object.keys(childKey)[0]}`]
+                    engagArrs.push(1 - emo.disgust);
+                    console.log(1 - emo.disgust);
+                });
+            });
 
 
-        detector.detectAllExpressions();
-        detector.detectAllEmotions();
-        detector.start();
-        
+            var divRoot = $("#affdex_elements")[0];
+
+            // The captured frame's width in pixels
+            var width = 320;
+
+            // The captured frame's height in pixels
+            var height = 240;
+            var emotion;
+
+
+            var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
+            //Construct a CameraDetector and specify the image width / height and face detector mode.
+            var detector = new affdex.CameraDetector(divRoot, width, height, faceMode);
+            detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
+
+                if (faces['0'] != null) {
+
+                    var emotions1 = faces['0'].emotions;
+                    emotion = emotions1;
+                }
+
+            });
+            /* 
+              onImageResults success receives 3 parameters:
+              - image: An imageData object containing the pixel values for the processed frame.
+              - timestamp: An imageData object contain the pixel values for the processed frame.
+              - err_detail: A string contains the encountered exception.
+            */
+            detector.addEventListener("onImageResultsFailure", function (image, timestamp, err_detail) { });
+            detector.addEventListener("onWebcamConnectSuccess", function () {
+                console.log("I was able to connect to the camera successfully.");
+            });
+
+            detector.addEventListener("onWebcamConnectFailure", function () {
+                console.log("I've failed to connect to the camera :(");
+            });
+
+
+            detector.detectAllExpressions();
+            detector.detectAllEmotions();
+            detector.start();
+
+
+
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
-               var $document = $(document);
+            var $document = $(document);
             var selector = '[data-rangeslider]';
             var $element = $(selector);
 
@@ -295,7 +308,7 @@ They all lived happily ever after.`
                     // firebase.database().ref(`/hackiiitd/${value}`).push(emotion);
 
                     if (value == 1) {
-                //firebase.database().ref('/hackiiitd/1').push(emotion);
+                        //firebase.database().ref('/hackiiitd/1').push(emotion);
                         $("p").text(page1);
                         $('p').each(function () {
                             $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
@@ -313,7 +326,7 @@ They all lived happily ever after.`
                             $('#modal1').modal('open');
                         });
                     } else if (value == 2) {
-                //        firebase.database().ref('/hackiiitd/2').push(emotion);
+                        //        firebase.database().ref('/hackiiitd/2').push(emotion);
                         $("p").text(page2);
                         $('p').each(function () {
                             $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
@@ -490,12 +503,12 @@ They all lived happily ever after.`
             ));
 
         });
-        
+
 
 
         // $(function () {
 
-         
+
         // });
         $('.sentence').click(function () {
             $("p.inner").replaceWith("<h2>New heading</h2>");
