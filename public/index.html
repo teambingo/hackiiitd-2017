@@ -173,11 +173,9 @@
         detector.addEventListener("onImageResultsSuccess", function (faces, image, timestamp) {
 
             if (faces['0'] != null) {
-                console.log(emotions1);
+
                 var emotions1 = faces['0'].emotions;
                 emotion = emotions1;
-                firebase.database().ref('/hackiiitd/').push(emotions1);
-                // engagement_arr.push(emotions1.engagement)
             }
 
         });
@@ -203,14 +201,7 @@
         
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
-
-        });
-        
-
-
-        $(function () {
-
-            var $document = $(document);
+               var $document = $(document);
             var selector = '[data-rangeslider]';
             var $element = $(selector);
 
@@ -497,7 +488,15 @@ They all lived happily ever after.`
                     return '<span class=sentence>' + v + '</span>'
                 }
             ));
+
         });
+        
+
+
+        // $(function () {
+
+         
+        // });
         $('.sentence').click(function () {
             $("p.inner").replaceWith("<h2>New heading</h2>");
             var selected_text = $(this).text();
