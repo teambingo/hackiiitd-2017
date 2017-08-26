@@ -164,6 +164,7 @@
 
         // The captured frame's height in pixels
         var height = 240;
+    var emotion ;
 
 
         var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
@@ -174,6 +175,7 @@
             if (faces['0'] != null) {
                 console.log(emotions1);
                 var emotions1 = faces['0'].emotions;
+                emotion = emotions1;
                 firebase.database().ref('/hackiiitd/').push(emotions1);
                 // engagement_arr.push(emotions1.engagement)
             }
@@ -203,6 +205,7 @@
             $('.modal').modal();
 
         });
+        
 
 
         $(function () {
@@ -297,8 +300,11 @@ It was true. The butterfly had intended all along to bring these three together.
                     var page10 = ` 
 The gingerbread family went inside their gingerbread house to celebrate with the butterfly remaining outside on the roof. She was content just smelling the gingerbread and sitting there quietly, whether it was day or night. 
 They all lived happily ever after.`
+                    firebase.database().ref(`/hackiiitd/${value}`).remove();
+                    firebase.database().ref(`/hackiiitd/${value}`).push(emotion);
 
                     if (value == 1) {
+                //firebase.database().ref('/hackiiitd/1').push(emotion);
                         $("p").text(page1);
                         $('p').each(function () {
                             $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
@@ -316,6 +322,7 @@ They all lived happily ever after.`
                             $('#modal1').modal('open');
                         });
                     } else if (value == 2) {
+                //        firebase.database().ref('/hackiiitd/2').push(emotion);
                         $("p").text(page2);
                         $('p').each(function () {
                             $(this).html($(this).text().split(/([\.\?!])(?= )/).map(
