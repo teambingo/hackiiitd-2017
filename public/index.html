@@ -114,21 +114,26 @@
 
     <div id="modal1" class="modal bottom-sheet">
         <div class="modal-content">
-            <h4>Additional features</h4>
+            <h4>extra resources<h4>
             <p id="mod">we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics
                 ,Your Selected lines were
             </p>
         </div>
         <div class="modal-footer">
             <div class="chip">
-                machine Learning
+                spicy
                 <i class="close material-icons"></i>
             </div>
             <div class="chip">
-                machine Learning
+                sweet
                 <i class="close material-icons"></i>
             </div>
-            <a id="modsearch" target="_blank" href="" class="modal-action modal-close waves-effect waves-green btn-flat">Google Search</a>
+             <div class="chip">
+                gingerbread
+                <i class="close material-icons"></i>
+            </div>
+
+            <a id="modsearch" target="_blank" href="" class="modal-action modal-close waves-effect waves-green btn-flat">Search ---></a>
         </div>
     </div>
     <div id="affdex_elements"></div>
@@ -165,6 +170,8 @@
                     engagArrs.push(1 - emo.disgust);
                     console.log(1 - emo.disgust);
                 });
+
+                
             });
 
 
@@ -217,7 +224,9 @@
             var $document = $(document);
             var selector = '[data-rangeslider]';
             var $element = $(selector);
-
+            $('div.chip').click(()=>{
+                window.open(`https://duckduckgo.com/?q=${$('div.chip').text()}`, "duckduckgo");
+            });
             // For ie8 support
             var textContent = ('textContent' in document) ? 'textContent' : 'innerText';
 
@@ -317,12 +326,13 @@ They all lived happily ever after.`
                                 }
                             ));
                         });
+
                         $('.sentence').click(function () {
                             $("p.inner").replaceWith("<h2>New heading</h2>");
                             var selected_text = $(this).text();
                             var standart_text = page1
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 2) {
@@ -340,7 +350,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page2
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 3) {
@@ -357,7 +367,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page3
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 4) {
@@ -374,7 +384,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page4
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 5) {
@@ -391,7 +401,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page5
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 6) {
@@ -408,7 +418,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page6
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 7) {
@@ -425,7 +435,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page7
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 8) {
@@ -442,7 +452,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page8
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 9) {
@@ -459,7 +469,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page9
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             $('#modal1').modal('open');
                         });
                     } else if (value == 10) {
@@ -478,7 +488,7 @@ They all lived happily ever after.`
                             var selected_text = $(this).text();
                             var standart_text = page10
                             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-                            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+                            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
                             // console.log($("p#mod").text() + selected_text)
                             $('#modal1').modal('open');
                         });
@@ -515,7 +525,7 @@ They all lived happily ever after.`
             var selected_text = $(this).text();
             var standart_text = $("p#mod").text()
             $("p#mod").html("we have analysed your selected lines and tagged them now its just easy as click on to find more on that topics                 ,Your Selected lines were  " + "<b>" + selected_text + "</b>")
-            $("a#modsearch").attr("href", `https://www.google.co.in/?q=${selected_text}`)
+            $("a#modsearch").attr("href", `https://duckduckgo.com/?q=${selected_text}`)
             // console.log($("p#mod").text() + selected_text)
             $('#modal1').modal('open');
         });
